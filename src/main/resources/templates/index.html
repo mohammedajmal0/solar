@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ampacity</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="/assets/font/flaticon_mycollection.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://kit.fontawesome.com/4855551183.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+<div class="main">
+
+    <div class="header">
+        <nav>
+            <div class="logo">
+                <img
+                        src="/assets/images/logo.png"
+                        alt="logo"
+                        onclick="window.location.href='index.html'"
+                />
+            </div>
+            <ul class="menu">
+                <li class="nav-link active"><a href="/">Home</a></li>
+                <li class="nav-link"><a href="estimator.html">Estimator</a></li>
+                <li class="nav-link"><a href="about.html">About Us</a></li>
+                <li class="nav-link"><a href="blog.html">Blog</a></li>
+                <li class="nav-link"><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" >
+                <i class="fa-solid fa-bars menu-icon" onclick="mobileMenuShow()"></i>
+                <i class="fa-solid fa-xmark cross-icon" onclick="mobileMenuHide()"></i>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero">
+        <video autoplay loop muted playsinline>
+            <source src="/assets/videos/back-video.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-content">
+            <h1>Harnessing the Power of the Sun</h1>
+            <h3>Your Journey to Solar Energy</h3>
+        </div>
+    </div>
+
+    <div class="quick-estimator">
+        <div class="estimator-video-container">
+            <video id="estimator-video" muted controls>
+                <source src="/assets/videos/estimator_video.mp4" type="video/mp4" />
+            </video>
+            <div id="video-overlay">
+                <button id="play-button" class="play-button">
+                    <i class="flaticon-play-button-arrowhead"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="quick-form">
+            <h2 class="title">Design your system</h2>
+            <form>
+
+
+                <div class="form-item">
+                    <input type="number"  id="pincode" oninput="validatePin(this)" autocomplete="off" required />
+                    <label for="pincode">Pincode</label>
+                    <span class="errorPincode" style="font-size: 0.8rem;color:red;display:none;">enter valid pincode</span>
+                    <input type="hidden" id="pincodeInfo" name="pincodeInfo">
+                </div>
+                <div class="form-item">
+                    <input
+                            type="number"
+                            id="Average-monthly-bill"
+                            autocomplete="off"
+                            required
+                    />
+                    <label for="Average-monthly-bill"
+                    >Avg Monthly Electricity Bill(rs)</label
+                    >
+                </div>
+                <div class="form-item">
+                    <input type="number" id="roof-area" autocomplete="off" required />
+                    <label for="roof-area">Roof Area(sq.ft.)</label>
+                </div>
+                <div class="form-item">
+                    <select id="electricity-connection-type" required >
+                        <option value=""></option>
+                        <option value="Residential">Residential</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Housing Society">Housing Society</option>
+                    </select>
+                    <label for="electricity-connection-type" class="form-arrow"
+                    >Electric Connection Type<i class="fa-solid fa-angle-down"></i
+                    ></label>
+
+                </div>
+                <div class="form-item">
+                    <select id="electricity-provider" onchange="onSelect()" name="selectedProvider" >
+                        <option value=""></option>
+                    </select>
+                    <label for="electricity-provider" class="form-arrow"
+                    >Electricity Provider<i class="fa-solid fa-angle-down"></i
+                    ></label>
+                </div>
+                <input type="submit" value="Design" class="submit_btn" id="submitBtn"/>
+<!--                <input type="submit"/>-->
+            </form>
+        </div>
+
+        <div class="quick-form-result">
+            <h3 id="result-header"><span id="kW-value"> </span> kilowatt(kW)</h3>
+            <div class="result-card">
+                <img src="/assets/images/salary.png" alt="piggy-bank" />
+                <p class="result-value">₹ <span id="money-saved"> </span></p>
+                <p class="result-text">Monthly Savings</p>
+            </div>
+            <div class="result-card">
+                <img src="/assets/images/solar-roof.png" alt="piggy-bank" />
+                <p class="result-value"><span id="roof-area1"> </span> sqft</p>
+                <p class="result-text">Roof area required</p>
+            </div>
+            <div class="result-card">
+                <img src="/assets/images/solar-energy.png" alt="piggy-bank" />
+                <p class="result-value"><span id="solar-units"> </span> kWh</p>
+                <p class="result-text">solar units per month</p>
+            </div>
+
+            <a href="" id="know-more-btn">Know More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <div class="statsNumber">
+        <div class="statsCard">
+            <i class="flaticon-happy stat-icon"></i>
+            <p class="counter" data-target="2500"></p>
+            <p class="count-det">Happy customers</p>
+        </div>
+        <div class="statsCard middle-card">
+            <i class="flaticon-solar-panel stat-icon"></i>
+            <p class="counter" data-target="1000"></p>
+            <p class="count-det">Solar Installation completed</p>
+        </div>
+        <div class="statsCard">
+            <i class="flaticon-rating stat-icon"></i>
+            <p class="counter" data-target="15"></p>
+            <p class="count-det">Years of Solar excellence</p>
+        </div>
+    </div>
+
+    <div class="feature">
+        <h2 class="title center-title feature-title">Why <span class="ampacity">Ampacity</span> ?</h2>
+        <p class="subtext feature-subtext">Our company always believes in offering high grade quality metal products to our valued clients all across the market.</p>
+        <div class="feature-box-container">
+            <div class="feature-box">
+                <div class="feature-box-number">01</div>
+                <div class="feature-box-title">Reliable alliances with technocrats worldwide</div>
+                <div class="feature-box-moreText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, saepe quibusdam suscipit iste adipisci cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, adipisci.</div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-box-number">02</div>
+                <div class="feature-box-title">Technologically advanced product range</div>
+                <div class="feature-box-moreText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, saepe quibusdam suscipit iste adipisci cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, adipisci.</div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-box-number">03</div>
+                <div class="feature-box-title">Ability to undertake bulk orders</div>
+                <div class="feature-box-moreText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, saepe quibusdam suscipit iste adipisci cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, adipisci.</div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-box-number">04</div>
+                <div class="feature-box-title">Qualitative products</div>
+                <div class="feature-box-moreText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, saepe quibusdam suscipit iste adipisci cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, adipisci.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonial">
+        <h2 class="title center">What our client says?</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="card-desc">
+                        <p><i class="flaticon-quote start-quote"></i>
+                            The quality to the work carried out by Ampacity was to our satisfaction and the project is successfully operating since commissioning. We recommend Ampacity as a reliable solar partner.
+                            <i class="flaticon-quote last-quote"></i>
+                        </p>
+                        <h6>Mr. Narayan Murthy</h6>
+                        <span>Engineer, Bangalore</span>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card-desc">
+                        <p><i class="flaticon-quote start-quote"></i>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eleifend erat consectetur pharetra congue. Quisque at suscipit quam, id vulputate urna.
+                            <i class="flaticon-quote last-quote"></i>
+                        </p>
+                        <h6>Mr. Shankar Shetty</h6>
+                        <span>Doctor, Mangalore</span>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card-desc">
+                        <p><i class="flaticon-quote start-quote"></i>
+                            Pellentesque eleifend dui felis, vel tristique libero varius semper. Cras sed sodales enim.
+                            <i class="flaticon-quote last-quote"></i>
+                        </p>
+                        <h6>Mr.Virat Kohli</h6>
+                        <span>Cricketer, Bangalore</span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="gallery">
+        <div class="gallery-content">
+            <h2 class="title gallery-title">Our Gallery</h2>
+            <p class="gallery-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eleifend erat consectetur pharetra congue. Quisque at suscipit quam, id vulputate urna. Suspendisse iaculis molestie.</p>
+
+        </div>
+        <div class="gallery-images">
+            <div class="grid-wrapper">
+                <div>
+                    <img src="/assets/images/gallery-img1.webp" alt="" />
+                </div>
+                <div class="tall">
+                    <img src="/assets/images/gallery-img2.webp" alt="" />
+                </div>
+                <div class="wide">
+                    <img src="/assets/images/gallery-img3.webp" alt="">
+                </div>
+                <div class="tall">
+                    <img src="/assets/images/gallery-img4.webp" alt="" />
+                </div>
+                <div class="big">
+                    <img src="/assets/images/gallery-img5.jpg" alt="" />
+                </div>
+                <div>
+                    <img src="/assets/images/gallery-img6.jpg" alt="" />
+                </div>
+                <div class="wide">
+                    <img src="/assets/images/gallery-img7.jpg" alt="" />
+                </div>
+                <div class="wide">
+                    <img src="/assets/images/gallery-img8.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-section">
+        <h2 class="title center-title blog-title">Blog</h2>
+        <p class="subtext blog-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum, diam vitae pharetra faucibus.</p>
+        <div class="blog-box-container">
+            <div class="blog-box">
+                <div class="blog-img">
+                    <img src="/assets/images/blog-img1.webp" alt="">
+                </div>
+                <div class="blog-details">
+                    <span id="author">Author</span>
+                    <span id="published-date">Date</span>
+                </div>
+                <div class="blog-content">
+                    <h4 class="blog-head">Lorem ipsum dolor sit</h4>
+                    <p class="blog-breif">Praesent consequat metus vitae metus congue vehicula. Suspendisse id pretium risus. Interdum et malesuada fames .</p>
+                    <button class="readMore" onclick="window.location.href = 'blog.html'">Read More</button>
+                </div>
+
+            </div>
+            <div class="blog-box">
+                <div class="blog-img">
+                    <img src="/assets/images/blog-img2.webp" alt="">
+                </div>
+                <div class="blog-details">
+                    <span id="author1">Author</span>
+                    <span id="published-date1">Date</span>
+                </div>
+                <div class="blog-content">
+                    <h4 class="blog-head">Lorem ipsum dolor sit</h4>
+                    <p class="blog-breif">Praesent consequat metus vitae metus congue vehicula. Suspendisse id pretium risus. Interdum et malesuada fames .</p>
+                    <button class="readMore">Read More</button>
+                </div>
+
+            </div>
+            <div class="blog-box">
+                <div class="blog-img">
+                    <img src="/assets/images/blog-img4.webp" alt="">
+                </div>
+                <div class="blog-details">
+                    <span id="author2">Author</span>
+                    <span id="published-date2">Date</span>
+                </div>
+                <div class="blog-content">
+                    <h4 class="blog-head">Lorem ipsum dolor sit</h4>
+                    <p class="blog-breif">Praesent consequat metus vitae metus congue vehicula. Suspendisse id pretium risus. Interdum et malesuada fames .</p>
+                    <button class="readMore">Read More</button>
+                </div>
+
+            </div>
+        </div>
+        <a href="blog.html" class="moreBlogBtn"> More Blogs <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="portfolio">
+        <h2 class="title center-title black">Portfolio</h2>
+        <p class="subtext black">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+        <div class="portfolio-slider-container">
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Industry</div>
+                                <div class="category-place">Bangalore, Karnataka</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img7.jpg" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Farm</div>
+                                <div class="category-place">Mangalore, Karnataka</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img8.jpg" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">House</div>
+                                <div class="category-place">Bangalore, Karnataka</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img5.jpg" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Engineer</div>
+                                <div class="category-place">Bangalore, Karnataka</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img6.jpg" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Bank</div>
+                                <div class="category-place">Mumbai, Maharastra</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img1.webp" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Industry</div>
+                                <div class="category-place">Pune, Maharastra</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img3.webp" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Industry</div>
+                                <div class="category-place">Bangalore, Karnataka</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img7.jpg" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Farm</div>
+                                <div class="category-place">Mangalore, Karnataka</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img8.jpg" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">House</div>
+                                <div class="category-place">Bangalore, Karnataka</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img5.jpg" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Engineer</div>
+                                <div class="category-place">Bangalore, Karnataka</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img6.jpg" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Bank</div>
+                                <div class="category-place">Mumbai, Maharastra</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img1.webp" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-head">
+                            <div class="category">
+                                <div class="category-head">Industry</div>
+                                <div class="category-place">Pune, Maharastra</div>
+                            </div>
+                            <div class="category-kw">
+                                <img src="/assets/images/sun.png" alt="">
+                                <div class="category-kw-value">10 kW</div>
+                            </div>
+                        </div>
+                        <div class="slide-img">
+                            <img src="/assets/images/gallery-img3.webp" alt="">
+                        </div>
+                        <div class="slide-footer">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="additional">
+        <div class="additional-content">
+            <h2 class="title">What are You Waiting for?</h2>
+
+            <div class="cta-btn">
+                <button class="btn design-btn" onclick="window.location.href='estimator.html'">Design Your System</button>
+                <button class="btn contact-btn" onclick="window.location.href='contact.html'">Contact</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-cont">
+            <div class="sitemap">
+                <h2 class="footer-sub-heads">Sitemap</h2>
+                <div class="quick-links">
+                    <a href="/">Home</a>
+                    <a href="estimator.html">Estimator</a>
+                    <a href="about.html">About us</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="T&C.html">Terms and Condition</a>
+                </div>
+            </div>
+            <div class="sitemap">
+                <h2 class="footer-sub-heads">Social</h2>
+                <div class="quick-links">
+                    <a href="">LinkedIn</a>
+                    <a href="">Twitter</a>
+                    <a href="">Facebook</a>
+                    <a href="">Instagram</a>
+                </div>
+            </div>
+            <div class="companyDetail">
+                <h2 class="footer-sub-heads">Contact</h2>
+                <div class="phone"><i class="flaticon-telephone-handle-silhouette"></i> 9876543210</div>
+                <div class="email">
+                    <i class="flaticon-email"></i> email@address.com
+                </div>
+                <div class="location email">
+                    <i class="flaticon-map"></i> Mangalore
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            Copyright &copy; Ampacity | All rights reserved.
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="/js/slider.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/main.js"></script>
+<script>
+    let postOfficeState;
+
+    function validatePin(input){
+        const pincode=input.value.trim();
+        if(pincode.length===6){
+            console.log(pincode);
+            makeApiCall(pincode);
+        }
+    }
+    function makeApiCall(pincode){
+        const hiddenId=document.getElementById("pincodeInfo");
+        const xhr=new XMLHttpRequest();
+        const apiUrl="https://api.postalpincode.in/pincode/"+pincode;
+        xhr.open("GET",apiUrl,true);
+        xhr.onreadystatechange=function (){
+            if(xhr.readyState===4){
+                if(xhr.status===200){
+                    const response=JSON.parse(xhr.responseText);
+                    // handling null response
+                    if(response[0].Status!=="Error"){
+                        hiddenId.value=response[0].PostOffice[0].Name;
+                        postOfficeState=response[0].PostOffice[0].State;
+                        populate(); // function call for updating provider list
+                        console.log(response[0].PostOffice[0].Name);
+                        console.log(response[0]);
+                        var errorPincodeMessage = document.querySelector('.errorPincode');
+                        errorPincodeMessage.style.display = 'none';
+                    }
+                    else{
+                        console.log("error while fetching pincode")
+                        var errorPincodeMessage = document.querySelector('.errorPincode');
+                        errorPincodeMessage.style.display = 'block';
+                    }
+
+                }
+                else{
+                    console.log("error");
+
+                }
+            }
+        }
+        xhr.send();
+    }
+    function populate(){
+        var selectId=document.getElementById("electricity-provider");
+        selectId.innerHTML="";
+        if(postOfficeState==="Karnataka"){
+            var optionArray=["|","Hubli electricity Supply Company Ltd | Hubli electricity Supply Company Ltd","Mangalore electricity Supply Company Ltd|Mangalore electricity Supply Company Ltd","Bangalore electricity Supply Company Ltd|Bangalore electricity Supply Company Ltd","Gulbarga Electricity Supply Company Ltd|Gulbarga Electricity Supply Company Ltd","Chamundeshwari Electricity Supply Company Limited|Chamundeshwari Electricity Supply Company Limited"]
+        }
+        else if(postOfficeState==="Andhra Pradesh"){
+            var optionArray=["|","Central Power Distribution Company of A.P. Ltd|Central Power Distribution Company of A.P. Ltd","Eastern Power Distribution Company of A.P. Ltd.|Eastern Power Distribution Company of A.P. Ltd.","Northern Power Distribution Company of A.P. Ltd.|Northern Power Distribution Company of A.P. Ltd."];
+        }
+        else if(postOfficeState==="Bihar"){
+            var optionArray=["|","Bihar State Electricity Board|Bihar State Electricity Board"];
+        }
+        else if(postOfficeState==="Delhi"){
+            var optionArray=["|","BSES Rajdhani Power Ltd.|BSES Rajdhani Power Ltd.","BSES Yamuna Power Ltd.|BSES Yamuna Power Ltd.","New Delhi Municipal Council|New Delhi Municipal Council","North Delhi Power Ltd.|North Delhi Power Ltd."];
+        }
+        else if(postOfficeState==="Haryana"){
+            var optionArray=["|","Dakshin Haryana Bijli Vitran Nigam|Dakshin Haryana Bijli Vitran Nigam","Uttar Haryana Bijli Vitran Nigam Ltd.|Uttar Haryana Bijli Vitran Nigam Ltd."];
+        }
+        else if(postOfficeState==="Jharkhand"){
+            var optionArray=["|","Damodar Valley Corporation|Damodar Valley Corporation","Jamshedpur Utility and Services Company|Jamshedpur Utility and Services Company","Jharkhand State Electricity Board|Jharkhand State Electricity Board","Bokaro Power Supply Co Pvt. Ltd.|Bokaro Power Supply Co Pvt. Ltd."];
+
+        }
+        else if(postOfficeState==="Kerala"){
+            var optionArray=["|","Kerala State Electricity Board|Kerala State Electricity Board"];
+        }
+        else if(postOfficeState==="Madhya Pradesh"){
+            var optionArray=["|","Madhya Pradesh Paschim Kshetra Vidyut Vitran Co. Ltd.|Madhya Pradesh Paschim Kshetra Vidyut Vitran Co. Ltd.","M.P. Poorv Kshetra Vidyut Vitran Co.|M.P. Poorv Kshetra Vidyut Vitran Co.","M.P.Madhya Kshetra Vidyut Vitran Co.|M.P.Madhya Kshetra Vidyut Vitran Co."];
+        }
+        else if(postOfficeState==="Meghalaya"){
+            var optionArray=["|","Meghalaya State Electricity Board|Meghalaya State Electricity Board"];
+        }
+        else if(postOfficeState==="Punjab"){
+            var optionArray=["|","Punjab State Electricity Board|Punjab State Electricity Board"];
+        }
+        else if(postOfficeState==="Rajasthan"){
+            var optionArray=["|","Ajmer Vidyut Vitran Nigam Ltd.|Ajmer Vidyut Vitran Nigam Ltd.","Jaipur Vidyut Vitran Nigam Ltd.|Jaipur Vidyut Vitran Nigam Ltd.","Jodhpur Vidyut Vitran Nigam Ltd.|Jodhpur Vidyut Vitran Nigam Ltd."];
+        }
+        else if(postOfficeState==="Tripura"){
+            var optionArray=["|","Tripura State Electricity Corporation Ltd|Tripura State Electricity Corporation Ltd"];
+        }
+        else if(postOfficeState==="Uttar Pradesh"){
+            var optionArray=["|","Dakshinanchal Vidyut Vitran Nigam Ltd.|Dakshinanchal Vidyut Vitran Nigam Ltd.","Kanpur Electric Supply Co. Ltd.|Kanpur Electric Supply Co. Ltd.","Madhyanchal Vidyut Vitran Nigam Ltd.|Madhyanchal Vidyut Vitran Nigam Ltd.","Noida Power Company Ltd.|Noida Power Company Ltd.","Paschimanchal Vidyut Vitran Nigam Ltd|Paschimanchal Vidyut Vitran Nigam Ltd","Purvanchal Vidyut Vitran Nigam Ltd.|Purvanchal Vidyut Vitran Nigam Ltd.","Uttar Pradesh Power Corporation Ltd.|Uttar Pradesh Power Corporation Ltd."];
+        }
+        else if(postOfficeState==="Manipur"){
+            var optionArray=["|" ,"Electricity Department, Manipur|Electricity Department, Manipur"]
+        }
+        else if(postOfficeState==="Maharashtra"){
+            var optionArray=["|","Best Undertaking Maharashtra State Electricity Distribution Co. Ltd|Best Undertaking Maharashtra State Electricity Distribution Co. Ltd","Reliance Energy Ltd.|Reliance Energy Ltd.","Tata Power Ltd.|Tata Power Ltd."]
+        }
+        else if(postOfficeState==="Odisha"){
+            var optionArray=["|","Central Electricity Supply Company of Orissa Ltd.|Central Electricity Supply Company of Orissa Ltd.","North Eastern Electricity Supply Company of Orissa Ltd.|North Eastern Electricity Supply Company of Orissa Ltd.","Southern Electricity Supply Company of Orissa Ltd.|Southern Electricity Supply Company of Orissa Ltd.","Western Electricity Supply Company of Orissa Ltd.|Western Electricity Supply Company of Orissa Ltd."]
+        }
+        else if(postOfficeState==="Tamil Nadu"){
+            var optionArray=["|","Tamil Nadu Electricity Board|Tamil Nadu Electricity Board"]
+        }
+        else if(postOfficeState==="Uttarakhand"){
+            var optionArray=["|"," Power Corporation Ltd| Power Corporation Ltd"]
+        }
+        else if(postOfficeState==="West Bengal"){
+            var optionArray=["|","Calcutta Electricity Supply Company Ltd.|Calcutta Electricity Supply Company Ltd."," Damodar Valley Corporation DPSC Ltd.|Damodar Valley CorporationDPSC Ltd.  ","West Bengal State Electricity Distribution Company Ltd.|West Bengal State Electricity Distribution Company Ltd."]
+        }
+        else if(postOfficeState==="Assam"){
+            var optionArray=["|","Central Assam Electricity Distribution Company Ltd.|Central Assam Electricity Distribution Company Ltd.","Lower Assam Electricity Distribution Company Ltd.|Lower Assam Electricity Distribution Company Ltd.","Upper Assam Electricity Distribution Company Ltd.|Upper Assam Electricity Distribution Company Ltd."]
+        }
+        else if(postOfficeState==="Chattisgarh"){
+            var optionArray=["|","Chhattisgarh State Power Distribution Company Ltd.|Chhattisgarh State Power Distribution Company Ltd."]
+        }
+        else if(postOfficeState==="Gujarat"){
+            var optionArray=["|","Dakshin Gujarat Vij Company Ltd.|Dakshin Gujarat Vij Company Ltd.","Madhya Gujarat Vij Company Ltd.|Madhya Gujarat Vij Company Ltd.","Paschim Gujarat Vij Company Ltd.|Paschim Gujarat Vij Company Ltd.","Torrent Power Ltd.|Torrent Power Ltd.","Uttar Gujarat Vij Company Ltd.|Uttar Gujarat Vij Company Ltd."]
+        }
+        else if(postOfficeState==="Himachal Pradesh"){
+            var optionArray=["|","Himachal Pradesh State Electricity Board|Himachal Pradesh State Electricity Board"]
+        }
+        else{
+            var optionArray=["|"];
+        }
+
+        for(var option in optionArray){
+            var pair=optionArray[option].split("|");
+            var newOption=document.createElement("option");
+            newOption.value=pair[0];
+            newOption.innerHTML=pair[1];
+            selectId.options.add(newOption);
+        }
+    }
+    function onSelect() {
+        let select=document.getElementById("electricity-provider");
+        let selectedOption=select.options[select.selectedIndex].value;
+        let data=selectedOption
+        // Use AJAX to send the form data to your Spring Boot endpoint
+        $.ajax({
+            type: 'POST',
+            url: "/getTariff", // Replace with your actual endpoint
+            data: data,
+            contentType: 'text/plain',
+            success: function(response) {
+                // Handle the response from the server (if needed)
+                console.log('Response:', response);
+                window.responseTariff=response;
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+</script>
+</body>
+</html>

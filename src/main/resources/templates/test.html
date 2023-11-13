@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.blog-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.blog {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+#load-more {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <div class="blog-container" id="blog-container">
+        <!-- Initial blog posts go here -->
+    </div>
+    <button id="load-more">Load More</button>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const loadMoreButton = document.getElementById("load-more");
+    const blogContainer = document.getElementById("blog-container");
+    const blogData = [
+        {
+            title: "Blog Post 1",
+            content: "This is the content of the first blog post."
+        },
+        {
+            title: "Blog Post 2",
+            content: "This is the content of the second blog post."
+        },
+        {
+            title: "Blog Post 3",
+            content: "This is the content of the third blog post."
+        },
+        {
+            title: "Blog Post 4",
+            content: "This is the content of the fourth blog post."
+        },
+        {
+            title: "Blog Post 5",
+            content: "This is the content of the fourth blog post."
+        },
+        {
+            title: "Blog Post 6",
+            content: "This is the content of the fourth blog post."
+        },
+        {
+            title: "Blog Post 7",
+            content: "This is the content of the fourth blog post."
+        },
+        {
+            title: "Blog Post 8",
+            content: "This is the content of the fourth blog post."
+        },
+        // Add more blog data here
+    ];
+
+    let currentBlogIndex = 0;
+
+    function createBlogPost(title, content) {
+        const blog = document.createElement("div");
+        blog.classList.add("blog");
+        blog.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+        return blog;
+    }
+
+    function loadMoreBlogs() {
+        const maxBlogsPerLoad = 2;
+        const blogsToLoad = blogData.slice(currentBlogIndex, currentBlogIndex + maxBlogsPerLoad);
+        
+        blogsToLoad.forEach(blog => {
+            const blogPost = createBlogPost(blog.title, blog.content);
+            blogContainer.appendChild(blogPost);
+        });
+
+        currentBlogIndex += maxBlogsPerLoad;
+
+        if (currentBlogIndex >= blogData.length) {
+            loadMoreButton.style.display = "none"; // Hide the button when all blogs are loaded
+        }
+    }
+
+    loadMoreButton.addEventListener("click", loadMoreBlogs);
+
+    // Load initial blog posts
+    loadMoreBlogs();
+});
+
+    </script>
+</body>
+</html>

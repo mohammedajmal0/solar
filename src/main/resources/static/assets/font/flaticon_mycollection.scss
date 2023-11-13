@@ -1,0 +1,81 @@
+$flaticon_mycollection-font: "flaticon_mycollection";
+
+@font-face {
+    font-family: $flaticon_mycollection-font;
+    src: url("./flaticon_mycollection.ttf?9b3692b52840cdf6b25ae047785e9bfa") format("truetype"),
+url("./flaticon_mycollection.woff?9b3692b52840cdf6b25ae047785e9bfa") format("woff"),
+url("./flaticon_mycollection.woff2?9b3692b52840cdf6b25ae047785e9bfa") format("woff2"),
+url("./flaticon_mycollection.eot?9b3692b52840cdf6b25ae047785e9bfa#iefix") format("embedded-opentype"),
+url("./flaticon_mycollection.svg?9b3692b52840cdf6b25ae047785e9bfa#flaticon_mycollection") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_mycollection !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon_mycollection-map: (
+    "solar-panel": "\f101",
+    "rating": "\f102",
+    "happy": "\f103",
+    "telephone-handle-silhouette": "\f104",
+    "email": "\f105",
+    "map": "\f106",
+    "next": "\f107",
+    "quote": "\f108",
+    "play-button-arrowhead": "\f109",
+    "menu": "\f10a",
+    "menu-1": "\f10b",
+    "binoculars": "\f10c",
+    "love": "\f10d",
+    "pen": "\f10e",
+);
+
+.flaticon-solar-panel:before {
+    content: map-get($flaticon_mycollection-map, "solar-panel");
+}
+.flaticon-rating:before {
+    content: map-get($flaticon_mycollection-map, "rating");
+}
+.flaticon-happy:before {
+    content: map-get($flaticon_mycollection-map, "happy");
+}
+.flaticon-telephone-handle-silhouette:before {
+    content: map-get($flaticon_mycollection-map, "telephone-handle-silhouette");
+}
+.flaticon-email:before {
+    content: map-get($flaticon_mycollection-map, "email");
+}
+.flaticon-map:before {
+    content: map-get($flaticon_mycollection-map, "map");
+}
+.flaticon-next:before {
+    content: map-get($flaticon_mycollection-map, "next");
+}
+.flaticon-quote:before {
+    content: map-get($flaticon_mycollection-map, "quote");
+}
+.flaticon-play-button-arrowhead:before {
+    content: map-get($flaticon_mycollection-map, "play-button-arrowhead");
+}
+.flaticon-menu:before {
+    content: map-get($flaticon_mycollection-map, "menu");
+}
+.flaticon-menu-1:before {
+    content: map-get($flaticon_mycollection-map, "menu-1");
+}
+.flaticon-binoculars:before {
+    content: map-get($flaticon_mycollection-map, "binoculars");
+}
+.flaticon-love:before {
+    content: map-get($flaticon_mycollection-map, "love");
+}
+.flaticon-pen:before {
+    content: map-get($flaticon_mycollection-map, "pen");
+}

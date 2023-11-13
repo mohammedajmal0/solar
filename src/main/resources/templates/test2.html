@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/4855551183.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/font/flaticon_mycollection.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <title>Ampacity-Test</title>
+  </head>
+  <body>
+    <div class="main">
+
+      <div class="header">
+        <nav>
+          <div class="logo">
+            <img
+              src="assets/images/logo.png"
+              alt="logo"
+              onclick="window.location.href='index.html'"
+            />
+          </div>
+          <ul class="menu">
+            <li class="nav-link active"><a href="/">Home</a></li>
+            <li class="nav-link"><a href="estimator.html">Estimator</a></li>
+            <li class="nav-link"><a href="about.html">About Us</a></li>
+            <li class="nav-link"><a href="blog.html">Blog</a></li>
+            <li class="nav-link"><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="mobile-menu" >
+            <i class="fa-solid fa-bars menu-icon" onclick="mobileMenuShow()"></i>
+            <i class="fa-solid fa-xmark cross-icon" onclick="mobileMenuHide()"></i>
+          </div>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <video autoplay loop muted playsinline>
+          <source src="assets/videos/back-video.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-content">
+          <h1>Harnessing the Power of the Sun</h1>
+          <h3>Your Journey to Solar Energy</h3>
+        </div>
+      </div>
+
+      <div class="quick-estimator">
+        <div class="estimator-video-container">
+          <video id="estimator-video" muted controls>
+            <source src="assets/videos/estimator_video.mp4" type="video/mp4" />
+          </video>
+          <div id="video-overlay">
+            <button id="play-button" class="play-button">
+              <i class="flaticon-play-button-arrowhead"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="quick-form">
+          <h2 class="title">Design your system</h2>
+          <form action="">
+            <div class="form-item">
+              <input type="number" id="pincode" autocomplete="off" required />
+              <label for="pincode">Pincode</label>
+            </div>
+            <div class="form-item">
+              <input
+                type="number"
+                id="Electricity_bill"
+                autocomplete="off"
+                required
+              />
+              <label for="Electricity_bill"
+                >Avg Monthly Electricity Bill(rs)</label
+              >
+            </div>
+            <div class="form-item">
+              <input type="number" id="Roof_area" autocomplete="off" required />
+              <label for="Roof_area">Roof Area(sq.ft.)</label>
+            </div>
+            <div class="form-item">
+              <select id="Connection_type" required>
+                <option value="" disabled selected></option>
+                <option value="type1">Type 1</option>
+                <option value="type2">Type 2</option>
+              </select>
+              <label for="Connection_type" class="form-arrow"
+                >Electric Connection Type<i class="fa-solid fa-angle-down"></i
+              ></label>
+            </div>
+            <div class="form-item">
+              <select id="Electricity_provider" required>
+                <option value="" disabled selected></option>
+                <option value="provider1">Provider 1</option>
+                <option value="provider2">Provider 2</option>
+              </select>
+              <label for="Electricity_provider" class="form-arrow"
+                >Electricity Provider<i class="fa-solid fa-angle-down"></i
+              ></label>
+            </div>
+            <input type="submit" value="Design" class="submit_btn" id="submitBtn"/>
+          </form>
+        </div>
+
+        <div class="quick-form-result">
+          <h3 id="result-header"><span id="kW-value"> </span> kilowatt(kW)</h3>
+          <div class="result-card">
+            <img src="assets/images/salary.png" alt="piggy-bank" />
+            <p class="result-value">₹ <span id="money-saved"> </span></p>
+            <p class="result-text">Monthly Savings</p>
+          </div>
+          <div class="result-card">
+            <img src="assets/images/solar-roof.png" alt="piggy-bank" />
+            <p class="result-value"><span id="roof-area"> </span> sqft</p>
+            <p class="result-text">Roof area required</p>
+          </div>
+          <div class="result-card">
+            <img src="assets/images/solar-energy.png" alt="piggy-bank" />
+            <p class="result-value"><span id="solar-units"> </span> kWh</p>
+            <p class="result-text">solar units per month</p>
+          </div>
+
+          <a href="" id="know-more-btn">Know More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="statsNumber">
+        <div class="statsCard">
+          <i class="flaticon-happy stat-icon"></i>
+          <p class="counter" data-target="2500">0</p>
+          <p class="count-det">Happy customers</p>
+      </div>
+      <div class="statsCard middle-card">
+        <i class="flaticon-solar-panel stat-icon"></i>
+          <p class="counter" data-target="1000">0</p>
+          <p class="count-det">Solar Installation completed</p>
+      </div>
+      <div class="statsCard">
+        <i class="flaticon-rating stat-icon"></i>
+          <p class="counter" data-target="15">0</p>
+          <p class="count-det">Years of Solar excellence</p>
+      </div>
+      </div>
+
+      <div class="feature">
+        <h2 class="title center-title feature-title">Why <span class="ampacity">Ampacity</span> ?</h2>
+        <p class="subtext feature-subtext">Our company always believes in offering high grade quality metal products to our valued clients all across the market.</p>
+        <div class="feature-box-container">
+          <div class="feature-box">
+            <div class="feature-box-number">01</div>
+            <div class="feature-box-title">Reliable alliances with technocrats worldwide</div>
+            <div class="feature-box-moreText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, saepe quibusdam suscipit iste adipisci cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, adipisci.</div>
+          </div>
+          <div class="feature-box">
+            <div class="feature-box-number">02</div>
+            <div class="feature-box-title">Technologically advanced product range</div>
+            <div class="feature-box-moreText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, saepe quibusdam suscipit iste adipisci cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, adipisci.</div>
+          </div>
+          <div class="feature-box">
+            <div class="feature-box-number">03</div>
+            <div class="feature-box-title">Ability to undertake bulk orders</div>
+            <div class="feature-box-moreText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, saepe quibusdam suscipit iste adipisci cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, adipisci.</div>
+          </div>
+          <div class="feature-box">
+            <div class="feature-box-number">04</div>
+            <div class="feature-box-title">Qualitative products</div>
+            <div class="feature-box-moreText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, saepe quibusdam suscipit iste adipisci cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, adipisci.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <h2 class="title center">What our client says?</h2>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="card-desc">
+                <p><i class="flaticon-quote start-quote"></i>
+                  The quality to the work carried out by Ampacity was to our satisfaction and the project is successfully operating since commissioning. We recommend Ampacity as a reliable solar partner.
+                  <i class="flaticon-quote last-quote"></i>
+                </p>
+                <h6>Mr. Narayan Murthy</h6>
+                <span>Engineer, Bangalore</span>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card-desc">
+                <p><i class="flaticon-quote start-quote"></i>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eleifend erat consectetur pharetra congue. Quisque at suscipit quam, id vulputate urna.
+                  <i class="flaticon-quote last-quote"></i>
+                </p>
+                <h6>Mr. Shankar Shetty</h6>
+                <span>Doctor, Mangalore</span>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card-desc">
+                <p><i class="flaticon-quote start-quote"></i>
+                  Pellentesque eleifend dui felis, vel tristique libero varius semper. Cras sed sodales enim.
+                  <i class="flaticon-quote last-quote"></i>
+                </p>
+                <h6>Mr.Virat Kohli</h6>
+                <span>Cricketer, Bangalore</span>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div> -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <hr>
+
+      <div class="gallery">
+        <div class="gallery-content">
+          <h2 class="title gallery-title">Our Gallery</h2>
+          <p class="gallery-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eleifend erat consectetur pharetra congue. Quisque at suscipit quam, id vulputate urna. Suspendisse iaculis molestie.</p>
+
+        </div>
+        <div class="gallery-images">
+          <div class="grid-wrapper">
+            <div>
+              <img src="assets/images/gallery-img1.webp" alt="" />
+            </div>
+            <div class="tall">
+              <img src="assets/images/gallery-img2.webp" alt="" />
+            </div>
+            <div class="wide">
+              <img src="assets/images/gallery-img3.webp" alt="">
+            </div>
+            <div class="tall">
+              <img src="assets/images/gallery-img4.webp" alt="" />
+            </div>
+            <div class="big">
+              <img src="assets/images/gallery-img5.jpg" alt="" />
+            </div>
+            <div>
+              <img src="assets/images/gallery-img6.jpg" alt="" />
+            </div>
+            <div class="wide">
+              <img src="assets/images/gallery-img7.jpg" alt="" />
+            </div>
+            <div class="wide">
+              <img src="assets/images/gallery-img8.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-section">
+        <h2 class="title center-title blog-title">Blog</h2>
+        <p class="subtext blog-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum, diam vitae pharetra faucibus.</p>
+        <div class="blog-box-container">
+          <div class="blog-box">
+           <div class="blog-img">
+            <img src="assets/images/blog-img1.webp" alt="">
+           </div>
+           <div class="blog-details">
+            <span id="author">Author</span>
+            <span id="published-date">Date</span>
+           </div>
+           <div class="blog-content">
+            <h4 class="blog-head">Lorem ipsum dolor sit</h4>
+            <p class="blog-breif">Praesent consequat metus vitae metus congue vehicula. Suspendisse id pretium risus. Interdum et malesuada fames .</p>
+            <button class="readMore" onclick="window.location.href = 'blog.html'">Read More</button>
+           </div>
+           
+          </div>
+          <div class="blog-box">
+           <div class="blog-img">
+            <img src="assets/images/blog-img2.webp" alt="">
+           </div>
+           <div class="blog-details">
+            <span id="author">Author</span>
+            <span id="published-date">Date</span>
+           </div>
+           <div class="blog-content">
+            <h4 class="blog-head">Lorem ipsum dolor sit</h4>
+            <p class="blog-breif">Praesent consequat metus vitae metus congue vehicula. Suspendisse id pretium risus. Interdum et malesuada fames .</p>
+            <button class="readMore">Read More</button>
+           </div>
+           
+          </div>
+          <div class="blog-box">
+           <div class="blog-img">
+            <img src="assets/images/blog-img4.webp" alt="">
+           </div>
+           <div class="blog-details">
+            <span id="author">Author</span>
+            <span id="published-date">Date</span>
+           </div>
+           <div class="blog-content">
+            <h4 class="blog-head">Lorem ipsum dolor sit</h4>
+            <p class="blog-breif">Praesent consequat metus vitae metus congue vehicula. Suspendisse id pretium risus. Interdum et malesuada fames .</p>
+            <button class="readMore">Read More</button>
+           </div>
+           
+          </div>
+        </div>
+        <a href="blog.html" class="moreBlogBtn"> More Blogs <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="portfolio">
+        <h2 class="title center-title black">Portfolio</h2>
+        <p class="subtext black">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+        <div class="portfolio-slider-container">
+          <div class="slider">
+            <div class="slide-track">
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Industry</div>
+                      <div class="category-place">Bangalore, Karnataka</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img7.jpg" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Farm</div>
+                      <div class="category-place">Mangalore, Karnataka</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img8.jpg" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">House</div>
+                      <div class="category-place">Bangalore, Karnataka</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img5.jpg" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Engineer</div>
+                      <div class="category-place">Bangalore, Karnataka</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img6.jpg" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Bank</div>
+                      <div class="category-place">Mumbai, Maharastra</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img1.webp" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Industry</div>
+                      <div class="category-place">Pune, Maharastra</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img3.webp" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Industry</div>
+                      <div class="category-place">Bangalore, Karnataka</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img7.jpg" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Farm</div>
+                      <div class="category-place">Mangalore, Karnataka</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img8.jpg" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">House</div>
+                      <div class="category-place">Bangalore, Karnataka</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img5.jpg" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Engineer</div>
+                      <div class="category-place">Bangalore, Karnataka</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img6.jpg" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Bank</div>
+                      <div class="category-place">Mumbai, Maharastra</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img1.webp" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="slide-head">
+                    <div class="category">
+                      <div class="category-head">Industry</div>
+                      <div class="category-place">Pune, Maharastra</div>
+                    </div>
+                    <div class="category-kw">
+                      <img src="assets/images/sun.png" alt="">
+                      <div class="category-kw-value">10 kW</div>
+                    </div>
+                  </div>
+                  <div class="slide-img">
+                    <img src="assets/images/gallery-img3.webp" alt="">
+                  </div>
+                  <div class="slide-footer">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="additional">
+        <div class="additional-content">
+          <h2 class="title">What are You Waiting for?</h2>
+
+          <div class="cta-btn">
+            <button class="btn design-btn" onclick="window.location.href='estimator.html'">Design Your System</button>
+            <button class="btn contact-btn" onclick="window.location.href='contact.html'">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-cont">
+          <div class="sitemap">
+            <h2 class="footer-sub-heads">Sitemap</h2>
+            <div class="quick-links">
+              <a href="/">Home</a>
+              <a href="estimator.html">Estimator</a>
+              <a href="about.html">About us</a>
+              <a href="blog.html">Blog</a>
+              <a href="contact.html">Contact</a>
+              <a href="T&C.html">Terms and Condition</a>
+            </div>
+          </div>
+          <div class="sitemap">
+            <h2 class="footer-sub-heads">Social</h2>
+            <div class="quick-links">
+              <a href="">LinkedIn</a>
+              <a href="">Twitter</a>
+              <a href="">Facebook</a>
+              <a href="">Instagram</a>
+            </div>
+          </div>
+          <div class="companyDetail">
+            <h2 class="footer-sub-heads">Contact</h2>
+            <div class="phone"><i class="flaticon-telephone-handle-silhouette"></i> 9876543210</div>
+            <div class="email">
+              <i class="flaticon-email"></i> email@address.com
+            </div>
+            <div class="location email">
+              <i class="flaticon-map"></i> Mangalore
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          Copyright &copy; Ampacity | All rights reserved.
+        </div>
+      </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/main.js"></script>
+
+
+    <script>
+//          gsap.registerPlugin(ScrollTrigger);
+
+// const counters = document.querySelectorAll(".counter");
+
+// counters.forEach((counter) => {
+//   const target = +counter.getAttribute("data-target");
+//   const increment = target / 400; // Adjust for the desired speed
+
+//   gsap.to(counter, {
+//     innerText: Math.round(target),
+//     duration: 1.5, // Adjust for the desired duration
+//     ease: "power2.inOut", // Adjust the easing function
+//     scrollTrigger: {
+//       trigger: counter,
+//       start: "top 90%", // Adjust the start point based on your design
+//       end: "top 10%", // Adjust the end point based on your design
+//       // onEnter: () => {
+//       //   counter.innerText = "0";
+//       // },
+//       onEnter: () => {
+//         const c = +counter.innerText;
+//         if (c < target) {
+//           counter.innerText = Math.round(c + increment);
+//           console.log(counter.innerText);
+//         }
+//       },
+//     },
+//   });
+// });
+
+
+// proper code for counter
+// gsap.registerPlugin(ScrollTrigger);
+
+// const counters = document.querySelectorAll(".counter");
+
+// counters.forEach((counter) => {
+//   counter.innerText = "0";
+
+//   const target = +counter.getAttribute("data-target");
+//   const increment = target / 400;
+
+//   gsap.to(counter, {
+//     innerText: target,
+//     duration: 1.5,
+//     ease: "power2.inOut",
+//     scrollTrigger: {
+//       trigger: counter,
+//       start: "top 80%",
+//       end: "top 20%",
+//       onEnter: () => {
+//         const updateCounter = () => {
+//           const c = +counter.innerText;
+//           if (c < target) {
+//             counter.innerText = Math.min(Math.ceil(c + increment), target);
+//             requestAnimationFrame(updateCounter);
+//           }
+//         };
+//         requestAnimationFrame(updateCounter);
+//       },
+//     },
+//   });
+// });
+    </script>
+  </body>
+</html>

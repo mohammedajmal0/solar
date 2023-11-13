@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/4855551183.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/responsive.css"/>
+  <link rel="stylesheet" type="text/css" href="/assets/font/flaticon_mycollection.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Ampacity</title>
+</head>
+<body>
+<div class="main">
+
+  <div class="header">
+    <nav>
+      <div class="logo">
+        <img
+                src="/assets/images/logo.png"
+                alt="logo"
+                onclick="window.location.href='index.html'"
+        />
+      </div>
+      <ul class="menu">
+        <li class="nav-link"><a href="/">Home</a></li>
+        <li class="nav-link active"><a href="estimator.html">Estimator</a></li>
+        <li class="nav-link"><a href="about.html">About Us</a></li>
+        <li class="nav-link"><a href="blog.html">Blog</a></li>
+        <li class="nav-link"><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-menu" >
+        <i class="fa-solid fa-bars menu-icon" onclick="mobileMenuShow()"></i>
+        <i class="fa-solid fa-xmark cross-icon" onclick="mobileMenuHide()"></i>
+      </div>
+    </nav>
+  </div>
+
+  <div class="estimator-hero">
+    <div class="estimator-hero-background">
+      <div class="estimator-left">
+        <!-- crimson color background -->
+      </div>
+      <div class="estimator-right">
+        <!-- image background -->
+      </div>
+    </div>
+    <div class="hero-content estimator-hero-content">
+      <h1>save money. <span class="text-stroke">Save the planet.</span></h1>
+      <h3>with india's finest solar manufacturer</h3>
+    </div>
+  </div>
+
+  <div class="estimator-main-form">
+    <h2 class="title center">Let’s design your System</h2>
+    <form action="" class="main-form">
+      <div class="form-item">
+        <input type="number" id="pincode" autocomplete="off" oninput="validatePin(this)" required />
+        <label for="pincode">Pincode</label>
+        <span class="errorPincode" style="font-size: 0.8rem;color:red;display:none;">enter valid pincode</span>
+        <input type="hidden" id="pincodeInfo" name="pincodeInfo">
+      </div>
+      <div class="form-item">
+        <input
+                type="number"
+                id="Average-monthly-bill"
+                autocomplete="off"
+                required
+        />
+        <label for="Average-monthly-bill"
+        >Avg Monthly Electricity Bill(rs)</label
+        >
+      </div>
+      <div class="form-item">
+        <input type="number" id="roof-area" autocomplete="off" required />
+        <label for="roof-area">Roof Area(sq.ft.)</label>
+      </div>
+      <div class="form-item">
+        <select id="electricity-connection-type" required>
+          <option value="" disabled selected></option>
+          <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Housing Society">Housing Society</option>
+        </select>
+        <label for="electricity-connection-type" class="form-arrow"
+        >Electric Connection Type<i class="fa-solid fa-angle-down"></i
+        ></label>
+      </div>
+      <div class="form-item">
+        <select id="electricity-provider" required onchange="onSelect()" name="selectedProvider">
+          <option value="" disabled selected></option>
+        </select>
+        <label for="electricity-provider" class="form-arrow"
+        >Electricity Provider<i class="fa-solid fa-angle-down"></i
+        ></label>
+      </div>
+      <div class="form-btn">
+        <input type="submit" value="Design And Price" class="submit_btn" id="submitBtn"/>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="main-form-result">
+    <h3 id="result-header"><span id="kW-value">0</span> kilowatt(kW)</h3>
+    <div class="main-result-container">
+      <div class="result-card">
+        <img src="/assets/images/salary.png" alt="piggy-bank" />
+        <p class="result-value">₹ <span id="money-saved"> </span></p>
+        <p class="result-text">Monthly Savings</p>
+      </div>
+      <div class="result-card">
+        <img src="/assets/images/solar-roof.png" alt="piggy-bank" />
+        <p class="result-value"><span id="roof-area-required"> </span> sqft</p>
+        <p class="result-text">Roof area required</p>
+      </div>
+      <div class="result-card">
+        <img src="/assets/images/solar-energy.png" alt="piggy-bank" />
+        <p class="result-value"><span id="solar-units"> </span> kWh</p>
+        <p class="result-text">solar units per month</p>
+      </div>
+    </div>
+    <p class="result-note"><span style="font-weight: 700;">Note :</span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, quam. Harum inventore vero enim maiores.</p>
+
+    <div class="price-card">
+      <div class="price-head">PRICING</div>
+      <div class="price-cont">
+        <div class="price-top">Project Price: <span id="project-price">₹ 12312</span></div>
+        <div class="price-mid">
+            <span class="mid-left">
+              <p>Overall Price</p>
+              <p> <span id="overall-price">₹ 123145</span></p>
+            </span>
+          <span class="mid-right">
+              <p>EMI(12 Months)</p>
+              <p> <span id="emi-price">₹ 123145</span></p>
+            </span>
+        </div>
+        <div class="price-bottom">
+          Interested Amount Saved: <span id="interested-amount-saved">₹ 12312</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="btn-cont">
+      <button class="btn price-btn" id="showDialogBtn"> I am Interested</button>
+    </div>
+  </div>
+
+  <div class="dropdownDetail">
+    <div id="dropdownbuttonContainer">
+      <button id="button1" class="dropdownbutton">Warranty <i class="fa-solid fa-angle-down"></i></button>
+      <button id="button2" class="dropdownbutton">Loan Terms <i class="fa-solid fa-angle-down"></i></button>
+    </div>
+    <div id="dropdowncontentContainer"></div>
+  </div>
+
+  <dialog id="favDialog">
+    <div class="estimator-contact-form">
+      <i class="fa-solid fa-xmark close-btn" id="confirmBtn"></i>
+      <form>
+        <h4>Contact info</h4><br>
+
+        <input type="text" id="name" name="name" placeholder="Name" required><br><br>
+
+
+        <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+        <input type="number" id="Phone" name="phone" placeholder="Phone" maxlength="10" required><br><br>
+
+        <div class="form-checkbox">
+          <input type="checkbox" name="" id="contact-checkbox">
+          <label for="contact-checkbox" id="checkbox-label">By clicking this your accepting our terms and conditions</label>
+        </div>
+        <input type="submit" value="Send" class="submit_btn" id="contact-form-btn">
+      </form>
+    </div>
+  </dialog>
+
+
+  <div class="footer">
+    <div class="footer-cont">
+      <div class="sitemap">
+        <h2 class="footer-sub-heads">Sitemap</h2>
+        <div class="quick-links">
+          <a href="/">Home</a>
+          <a href="estimator.html">Estimator</a>
+          <a href="about.html">About us</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="T&C.html">Terms and Condition</a>
+        </div>
+      </div>
+      <div class="sitemap">
+        <h2 class="footer-sub-heads">Social</h2>
+        <div class="quick-links">
+          <a href="">LinkedIn</a>
+          <a href="">Twitter</a>
+          <a href="">Facebook</a>
+          <a href="">Instagram</a>
+        </div>
+      </div>
+      <div class="companyDetail">
+        <h2 class="footer-sub-heads">Contact</h2>
+        <div class="phone"><i class="flaticon-telephone-handle-silhouette"></i> 9876543210</div>
+        <div class="email">
+          <i class="flaticon-email"></i> email@address.com
+        </div>
+        <div class="location email">
+          <i class="flaticon-map"></i> Mangalore
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      Copyright &copy; Ampacity | All rights reserved.
+    </div>
+  </div>
+
+</div>
+<!-- <script src="js/main.js"></script> -->
+<script src="/js/global.js"></script>
+<script src="/js/estimator.js"></script>
+<script>
+  let postOfficeState;
+
+  function validatePin(input){
+    const pincode=input.value.trim();
+    if(pincode.length===6){
+      console.log(pincode);
+      makeApiCall(pincode);
+    }
+  }
+  function makeApiCall(pincode){
+    const hiddenId=document.getElementById("pincodeInfo");
+    const xhr=new XMLHttpRequest();
+    const apiUrl="https://api.postalpincode.in/pincode/"+pincode;
+    xhr.open("GET",apiUrl,true);
+    xhr.onreadystatechange=function (){
+      if(xhr.readyState===4){
+        if(xhr.status===200){
+          const response=JSON.parse(xhr.responseText);
+          // handling null response
+          if(response[0].Status!=="Error"){
+            hiddenId.value=response[0].PostOffice[0].Name;
+            postOfficeState=response[0].PostOffice[0].State;
+            populate(); // function call for updating provider list
+            console.log(response[0].PostOffice[0].Name);
+            console.log(response[0]);
+            var errorPincodeMessage = document.querySelector('.errorPincode');
+            errorPincodeMessage.style.display = 'none';
+          }
+          else{
+            console.log("error while fetching pincode")
+            var errorPincodeMessage = document.querySelector('.errorPincode');
+            errorPincodeMessage.style.display = 'block';
+          }
+
+        }
+        else{
+          console.log("error");
+
+        }
+      }
+    }
+    xhr.send();
+  }
+
+  function populate(){
+    let optionArray;
+    var selectId=document.getElementById("electricity-provider");
+    selectId.innerHTML="";
+    if(postOfficeState==="Karnataka"){
+      optionArray = ["|", "Hubli electricity Supply Company Ltd | Hubli electricity Supply Company Ltd", "Mangalore electricity Supply Company Ltd|Mangalore electricity Supply Company Ltd", "Bangalore electricity Supply Company Ltd|Bangalore electricity Supply Company Ltd", "Gulbarga Electricity Supply Company Ltd|Gulbarga Electricity Supply Company Ltd", "Chamundeshwari Electricity Supply Company Limited|Chamundeshwari Electricity Supply Company Limited"];
+    }
+    else if(postOfficeState==="Andhra Pradesh"){
+      optionArray = ["|","Central Power Distribution Company of A.P. Ltd|Central Power Distribution Company of A.P. Ltd","Eastern Power Distribution Company of A.P. Ltd.|Eastern Power Distribution Company of A.P. Ltd.","Northern Power Distribution Company of A.P. Ltd.|Northern Power Distribution Company of A.P. Ltd."];
+    }
+    else if(postOfficeState==="Bihar"){
+      optionArray = ["|","Bihar State Electricity Board|Bihar State Electricity Board"];
+    }
+    else if(postOfficeState==="Delhi"){
+      optionArray = ["|","BSES Rajdhani Power Ltd.|BSES Rajdhani Power Ltd.","BSES Yamuna Power Ltd.|BSES Yamuna Power Ltd.","New Delhi Municipal Council|New Delhi Municipal Council","North Delhi Power Ltd.|North Delhi Power Ltd."];
+    }
+    else if(postOfficeState==="Haryana"){
+      optionArray = ["|","Dakshin Haryana Bijli Vitran Nigam|Dakshin Haryana Bijli Vitran Nigam","Uttar Haryana Bijli Vitran Nigam Ltd.|Uttar Haryana Bijli Vitran Nigam Ltd."];
+    }
+    else if(postOfficeState==="Jharkhand"){
+      optionArray = ["|","Damodar Valley Corporation|Damodar Valley Corporation","Jamshedpur Utility and Services Company|Jamshedpur Utility and Services Company","Jharkhand State Electricity Board|Jharkhand State Electricity Board","Bokaro Power Supply Co Pvt. Ltd.|Bokaro Power Supply Co Pvt. Ltd."];
+
+    }
+    else if(postOfficeState==="Kerala"){
+      optionArray = ["|","Kerala State Electricity Board|Kerala State Electricity Board"];
+    }
+    else if(postOfficeState==="Madhya Pradesh"){
+      optionArray = ["|","Madhya Pradesh Paschim Kshetra Vidyut Vitran Co. Ltd.|Madhya Pradesh Paschim Kshetra Vidyut Vitran Co. Ltd.","M.P. Poorv Kshetra Vidyut Vitran Co.|M.P. Poorv Kshetra Vidyut Vitran Co.","M.P.Madhya Kshetra Vidyut Vitran Co.|M.P.Madhya Kshetra Vidyut Vitran Co."];
+    }
+    else if(postOfficeState==="Meghalaya"){
+      optionArray = ["|","Meghalaya State Electricity Board|Meghalaya State Electricity Board"];
+    }
+    else if(postOfficeState==="Punjab"){
+      optionArray = ["|","Punjab State Electricity Board|Punjab State Electricity Board"];
+    }
+    else if(postOfficeState==="Rajasthan"){
+      optionArray = ["|","Ajmer Vidyut Vitran Nigam Ltd.|Ajmer Vidyut Vitran Nigam Ltd.","Jaipur Vidyut Vitran Nigam Ltd.|Jaipur Vidyut Vitran Nigam Ltd.","Jodhpur Vidyut Vitran Nigam Ltd.|Jodhpur Vidyut Vitran Nigam Ltd."];
+    }
+    else if(postOfficeState==="Tripura"){
+      optionArray = ["|","Tripura State Electricity Corporation Ltd|Tripura State Electricity Corporation Ltd"];
+    }
+    else if(postOfficeState==="Uttar Pradesh"){
+      optionArray = ["|","Dakshinanchal Vidyut Vitran Nigam Ltd.|Dakshinanchal Vidyut Vitran Nigam Ltd.","Kanpur Electric Supply Co. Ltd.|Kanpur Electric Supply Co. Ltd.","Madhyanchal Vidyut Vitran Nigam Ltd.|Madhyanchal Vidyut Vitran Nigam Ltd.","Noida Power Company Ltd.|Noida Power Company Ltd.","Paschimanchal Vidyut Vitran Nigam Ltd|Paschimanchal Vidyut Vitran Nigam Ltd","Purvanchal Vidyut Vitran Nigam Ltd.|Purvanchal Vidyut Vitran Nigam Ltd.","Uttar Pradesh Power Corporation Ltd.|Uttar Pradesh Power Corporation Ltd."];
+    }
+    else if(postOfficeState==="Manipur"){
+      optionArray = ["|" ,"Electricity Department, Manipur|Electricity Department, Manipur"];
+    }
+    else if(postOfficeState==="Maharashtra"){
+      optionArray = ["|","Best Undertaking Maharashtra State Electricity Distribution Co. Ltd|Best Undertaking Maharashtra State Electricity Distribution Co. Ltd","Reliance Energy Ltd.|Reliance Energy Ltd.","Tata Power Ltd.|Tata Power Ltd."];
+    }
+    else if(postOfficeState==="Odisha"){
+      optionArray = ["|","Central Electricity Supply Company of Orissa Ltd.|Central Electricity Supply Company of Orissa Ltd.","North Eastern Electricity Supply Company of Orissa Ltd.|North Eastern Electricity Supply Company of Orissa Ltd.","Southern Electricity Supply Company of Orissa Ltd.|Southern Electricity Supply Company of Orissa Ltd.","Western Electricity Supply Company of Orissa Ltd.|Western Electricity Supply Company of Orissa Ltd."];
+    }
+    else if(postOfficeState==="Tamil Nadu"){
+      optionArray = ["|","Tamil Nadu Electricity Board|Tamil Nadu Electricity Board"];
+    }
+    else if(postOfficeState==="Uttarakhand"){
+      optionArray = ["|"," Power Corporation Ltd| Power Corporation Ltd"];
+    }
+    else if(postOfficeState==="West Bengal"){
+      optionArray = ["|","Calcutta Electricity Supply Company Ltd.|Calcutta Electricity Supply Company Ltd."," Damodar Valley Corporation DPSC Ltd.|Damodar Valley CorporationDPSC Ltd.  ","West Bengal State Electricity Distribution Company Ltd.|West Bengal State Electricity Distribution Company Ltd."];
+    }
+    else if(postOfficeState==="Assam"){
+      optionArray = ["|","Central Assam Electricity Distribution Company Ltd.|Central Assam Electricity Distribution Company Ltd.","Lower Assam Electricity Distribution Company Ltd.|Lower Assam Electricity Distribution Company Ltd.","Upper Assam Electricity Distribution Company Ltd.|Upper Assam Electricity Distribution Company Ltd."];
+    }
+    else if(postOfficeState==="Chattisgarh"){
+      optionArray = ["|","Chhattisgarh State Power Distribution Company Ltd.|Chhattisgarh State Power Distribution Company Ltd."];
+    }
+    else if(postOfficeState==="Gujarat"){
+      optionArray = ["|","Dakshin Gujarat Vij Company Ltd.|Dakshin Gujarat Vij Company Ltd.","Madhya Gujarat Vij Company Ltd.|Madhya Gujarat Vij Company Ltd.","Paschim Gujarat Vij Company Ltd.|Paschim Gujarat Vij Company Ltd.","Torrent Power Ltd.|Torrent Power Ltd.","Uttar Gujarat Vij Company Ltd.|Uttar Gujarat Vij Company Ltd."];
+    }
+    else if(postOfficeState==="Himachal Pradesh"){
+      optionArray = ["|","Himachal Pradesh State Electricity Board|Himachal Pradesh State Electricity Board"];
+    }
+    else{
+      optionArray = ["|"];
+    }
+
+    for(var option in optionArray){
+      var pair=optionArray[option].split("|");
+      var newOption=document.createElement("option");
+      newOption.value=pair[0];
+      newOption.innerHTML=pair[1];
+      selectId.options.add(newOption);
+    }
+  }
+
+  function onSelect() {
+    let select=document.getElementById("electricity-provider");
+    let selectedOption=select.options[select.selectedIndex].value;
+    let data=selectedOption
+    // Use AJAX to send the form data to your Spring Boot endpoint
+    $.ajax({
+      type: 'POST',
+      url: "/getTariff", // Replace with your actual endpoint
+      data: data,
+      contentType: 'text/plain',
+      success: function(response) {
+        // Handle the response from the server (if needed)
+        console.log('Response:', response);
+        window.responseTariff=response;
+      },
+      error: function(xhr, status, error) {
+        console.error('Error:', error);
+      }
+    });
+  }
+</script>
+</body>
+</html>

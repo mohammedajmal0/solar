@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/4855551183.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/responsive.css"/>
+  <link rel="stylesheet" type="text/css" href="/assets/font/flaticon_mycollection.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <script src="https://smtpjs.com/v3/smtp.js">
+  </script>
+  <title>Ampacity</title>
+</head>
+<body>
+<div class="main">
+
+  <div class="header">
+    <nav>
+      <div class="logo">
+        <img
+                src="/assets/images/logo.png"
+                alt="logo"
+                onclick="window.location.href='index.html'"
+        />
+      </div>
+      <ul class="menu">
+        <li class="nav-link"><a href="/">Home</a></li>
+        <li class="nav-link"><a href="estimator.html">Estimator</a></li>
+        <li class="nav-link"><a href="about.html">About Us</a></li>
+        <li class="nav-link"><a href="blog.html">Blog</a></li>
+        <li class="nav-link active"><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-menu" >
+        <i class="fa-solid fa-bars menu-icon" onclick="mobileMenuShow()"></i>
+        <i class="fa-solid fa-xmark cross-icon" onclick="mobileMenuHide()"></i>
+      </div>
+    </nav>
+  </div>
+
+  <div class="contact-hero">
+    <div class="contact-content">
+      <h5>ADDRESS</h5>
+      <h3>VISIT US</h3>
+      <p>Mangalore/ Bangalore/ Mysore</p>
+    </div>
+    <div class="contact-content">
+      <h5>Phone</h5>
+      <h3>call us</h3>
+      <p>12345-67890</p>
+    </div>
+    <div class="contact-content">
+      <h5>Email</h5>
+      <h3>Contact Us</h3>
+      <p>info@your-website.com</p>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <h2>Talk to us</h2>
+    <form onsubmit="sendEmail(); reset(); return false;">
+
+      <input type="text" id="name" name="name" placeholder="Name" required><br><br>
+
+
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="number" id="Phone" name="phone" placeholder="Phone" maxlength="10" required><br><br>
+
+
+      <textarea id="message" name="message" rows="4" placeholder="Message" required></textarea><br><br>
+
+      <input type="submit" value="Send" class="submit_btn" id="contact-form-btn">
+
+      <div class="social-id white contact-social-id">
+        <a href=""><i class="fa-solid fa-envelope"></i></a>
+        <a href=""><i class="fa-brands fa-square-whatsapp"></i></a>
+        <a href=""><i class="fa-solid fa-square-phone"></i></a>
+        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+
+      </div>
+    </form>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-cont">
+      <div class="sitemap">
+        <h2 class="footer-sub-heads">Sitemap</h2>
+        <div class="quick-links">
+          <a href="/">Home</a>
+          <a href="estimator.html">Estimator</a>
+          <a href="about.html">About us</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="T&C.html">Terms and Condition</a>
+        </div>
+      </div>
+      <div class="sitemap">
+        <h2 class="footer-sub-heads">Social</h2>
+        <div class="quick-links">
+          <a href="">LinkedIn</a>
+          <a href="">Twitter</a>
+          <a href="">Facebook</a>
+          <a href="">Instagram</a>
+        </div>
+      </div>
+      <div class="companyDetail">
+        <h2 class="footer-sub-heads">Contact</h2>
+        <div class="phone"><i class="flaticon-telephone-handle-silhouette"></i> 9876543210</div>
+        <div class="email">
+          <i class="flaticon-email"></i> email@address.com
+        </div>
+        <div class="location email">
+          <i class="flaticon-map"></i> Mangalore
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      Copyright &copy; Ampacity | All rights reserved.
+    </div>
+  </div>
+</div>
+
+  <script src="/js/global.js"></script>
+  <script>
+    function sendEmail(){
+      Email.send({
+        Host : "smtp.elasticemail.com",
+        Username : "mohammedajmal1oo1@gmail.com",
+        Password : "19FB06BEB187611769D2AF2B89E34883D51B",
+        To : 'foyiv54143@glalen.com',
+        From : "mohammedajmal1oo1@gmail.com",
+        Subject : "This is the subject",
+        Body : "And this is the body"
+      }).then(
+              message => alert(message)
+      );
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/4855551183.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/responsive.css"/>
+  <link rel="stylesheet" type="text/css" href="/assets/font/flaticon_mycollection.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <title>Ampacity</title>
+</head>
+<body>
+<div class="main">
+
+  <div class="header">
+    <nav>
+      <div class="logo">
+        <img
+                src="/assets/images/logo.png"
+                alt="logo"
+                onclick="window.location.href='index.html'"
+        />
+      </div>
+      <ul class="menu">
+        <li class="nav-link"><a href="/">Home</a></li>
+        <li class="nav-link"><a href="estimator.html">Estimator</a></li>
+        <li class="nav-link"><a href="about.html">About Us</a></li>
+        <li class="nav-link active"><a href="blog.html">Blog</a></li>
+        <li class="nav-link"><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-menu" >
+        <i class="fa-solid fa-bars menu-icon" onclick="mobileMenuShow()"></i>
+        <i class="fa-solid fa-xmark cross-icon" onclick="mobileMenuHide()"></i>
+      </div>
+    </nav>
+  </div>
+
+  <div class="blog-page-section">
+    <h2 class="title center-title blog-title black">Blogs</h2>
+    <!-- <p class="subtext blog-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum, diam vitae pharetra faucibus.</p> -->
+    <div class="blog-box-container" id="blog-container">
+      <!-- Content dynamically added through js -->
+    </div>
+    <button id="load-more-button" onclick="loadMoreBlogs()">Load More</button>
+  </div>
+
+  <div class="footer">
+    <div class="footer-cont">
+      <div class="sitemap">
+        <h2 class="footer-sub-heads">Sitemap</h2>
+        <div class="quick-links">
+          <a href="/">Home</a>
+          <a href="estimator.html">Estimator</a>
+          <a href="about.html">About us</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="T&C.html">Terms and Condition</a>
+        </div>
+      </div>
+      <div class="sitemap">
+        <h2 class="footer-sub-heads">Social</h2>
+        <div class="quick-links">
+          <a href="">LinkedIn</a>
+          <a href="">Twitter</a>
+          <a href="">Facebook</a>
+          <a href="">Instagram</a>
+        </div>
+      </div>
+      <div class="companyDetail">
+        <h2 class="footer-sub-heads">Contact</h2>
+        <div class="phone"><i class="flaticon-telephone-handle-silhouette"></i> 9876543210</div>
+        <div class="email">
+          <i class="flaticon-email"></i> email@address.com
+        </div>
+        <div class="location email">
+          <i class="flaticon-map"></i> Mangalore
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      Copyright &copy; Ampacity | All rights reserved.
+    </div>
+  </div>
+
+
+  <script src="/js/global.js"></script>
+  <script type="text/javascript" src="/js/blog.js"></script>
+
+</body>
+</html>
+    
